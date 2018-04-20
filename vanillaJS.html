@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <title>Document</title>
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+         <span class="navbar-brand mb-0 h1">PayCheck-Check</span>
+    </nav>
+    <br>
+    <div class="list">
+        <form class="form">
+        <div class="form-container">
+            <input type="text" id="hours" placeholder="hours worked">
+            <input type="text" id="rate" placeholder="pay rate">
+            <input type="text" id="tax" placeholder="tax rate ex = '.15'">
+        </div>
+        <br>
+        <button type="submit" class="btn btn-dark" id="submit">submit</button>       
+        </form>
+        <br>
+        <p id="result"></p>
+        <p id="taxResult"></p>
+    </div>
+
+<script>
+// const addButton = document.getElementsById("submit")
+// var hoursInput = document.getElementById("hours").value
+// const rateInput = document.getElementById("rate").value
+// const taxInput = document.getElementById("hours").value
+// const list = document.getElementById("list")
+
+document.getElementById("submit").addEventListener("click", function(evt) { 
+    evt.preventDefault()  
+    var hoursInput = document.getElementById("hours").value
+    var rateInput = document.getElementById("rate").value
+    var taxInput = document.getElementById("tax").value
+    var total
+
+    if (hoursInput < 40) {
+        document.getElementById("result").innerHTML = (hoursInput * rateInput);
+        console.log("no overtime")
+    }
+    else if (hoursInput > 40) {
+        document.getElementById("result").innerHTML = (40 * rateInput) + (hoursInput - 40) * (rateInput * 1.5);
+        console.log("OVERTIME")
+    }
+    else {
+        alert("Invalid entry")
+    }
+    total = document.getElementById("result").innerHTML * taxInput;
+    document.getElementById("taxResult").innerHTML = total;
+    //document.getElementById("result").innerHTML = "the number is " + hoursInput;
+    }
+);
+
+</script>
+</body>
+</html>

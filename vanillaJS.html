@@ -33,11 +33,6 @@
     </div>
 
 <script>
-// const addButton = document.getElementsById("submit")
-// var hoursInput = document.getElementById("hours").value
-// const rateInput = document.getElementById("rate").value
-// const taxInput = document.getElementById("hours").value
-// const list = document.getElementById("list")
 
 document.getElementById("submit").addEventListener("click", function(evt) { 
     evt.preventDefault()  
@@ -46,20 +41,20 @@ document.getElementById("submit").addEventListener("click", function(evt) {
     var taxInput = document.getElementById("tax").value
     var total
 
-    if (hoursInput < 40) {
-        document.getElementById("result").innerHTML = (hoursInput * rateInput);
+    if (hoursInput <= 40) {
+        document.getElementById("result").innerHTML = (hoursInput * rateInput) - (hoursInput * rateInput * taxInput);
         console.log("no overtime")
     }
     else if (hoursInput > 40) {
-        document.getElementById("result").innerHTML = (40 * rateInput) + (hoursInput - 40) * (rateInput * 1.5);
+        document.getElementById("result").innerHTML = (40 * rateInput) + (hoursInput - 40) * (rateInput * 1.5) - (hoursInput * rateInput * taxInput);
         console.log("OVERTIME")
     }
     else {
         alert("Invalid entry")
     }
-    total = document.getElementById("result").innerHTML * taxInput;
-    document.getElementById("taxResult").innerHTML = total;
-    //document.getElementById("result").innerHTML = "the number is " + hoursInput;
+    document.getElementById("hours").value = "";
+    document.getElementById("rate").value = "";
+    document.getElementById("tax").value = "";
     }
 );
 
